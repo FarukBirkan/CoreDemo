@@ -1,0 +1,81 @@
+﻿
+
+
+ <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+ <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<div class="single-gd tech-btm">
+    <h4>Mail Kayıt </h4>
+    <P>Blogları ilk siz okuyun.</P>
+    <div  class="tech-btm">
+
+
+        <form   method="post">
+          
+            <input autocomplete="off" id="txtMail" name="Mail" type="email" value="" />
+
+            @*<input type="button" value="Kaydet"  id="btnGet" />*@
+            <hr />
+
+            <button type="button" class="btn btn-info" id="btnGet">Mail Adres Kaydet</button>
+        </form>
+
+
+    </div>
+</div>
+
+<script type="text/javascript">
+        $(function () {
+            $("#btnGet").click(function () {
+                $.ajax({
+                    type: "POST",
+                   url: "/NewLetter/SubScribMail",
+                    data: { "Mail": $("#txtMail").val() },
+                    success: function (response) {
+                      swal("Kayıt Başarılı", "", "success");
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                   }
+                });
+            });
+        });
+       
+    </script>
+
+
+
+@*<script type="text/javascript">
+        $("#btnGondert").click(function () {
+            alert(tMail.value);
+            $("#btnGondert").attr("disabled", "true");
+             
+            var MAIL = 
+            {
+                Mail:tMail.value
+               
+            };
+ 
+            var theData = JSON.stringify(MAIL);
+            $.ajax({
+                type: "POST",
+                url: "/NewLetter/SubScribMail",
+                contentType: "application/json; charset=utf-8",
+                 
+                data: { 'mm': tMail.value },
+                dataType: "json",
+                success: function (data) {
+                    $("#btnGondert").removeAttr("disabled");
+                    alert("işlem tamam asdklfj")
+ 
+                },
+                error: function (data) {
+                    $("#btnGondert").removeAttr("disabled");
+                }
+ 
+            });
+        });
+    </script>*@

@@ -1,0 +1,47 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Comment>
+ <h4>Yorumlar</h4>
+
+@if (Model.Count()>0)
+{
+    foreach(var i in Model)
+{
+ 
+         <div class="comment-top">
+                       
+                        <div class="media">
+                           @* <img src="~/web/images/t1.jpg" alt="" class="img-fluid" />*@
+                            <div class="media-body">
+                                <h6 class="mt-0"><i> @i.CommentName - @i.CommentDate</i></h6>
+
+                                <p>
+                               @i.CommentTitle
+                               <sub> @i.CommentContent</sub>
+                                </p>
+@*
+                                 <p>
+                              @i.CommentContent
+                                </p>*@
+                            </div>
+                           @* <div class="media-body">
+                                <h6 class="mt-0">@i.CommentDate</h6>
+                                <p>
+                               Yorum :    @i.CommentContent
+                                </p>
+
+                              
+                            </div>*@
+                        </div>
+        </div>
+
+        <hr />
+
+
+    }
+}
+else
+{
+     <p>
+                              Hiç Yorum Yapılmamıştır.
+                                </p>
+
+}

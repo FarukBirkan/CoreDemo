@@ -1,0 +1,89 @@
+﻿@using EntityLayer.Concrete
+@model Writer
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+
+
+
+<section class="main-content-w3layouts-agileits">
+    <div class="container">
+        <h3 class="tittle">Kayıt Bilgileri</h3>
+        <div class="inner-sec">
+            <div class="login p-5 bg-light mx-auto mw-100">
+                @*	<form   method="post">*@
+                @using (Html.BeginForm("Index", "Register", FormMethod.Post))
+
+                {
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="validationCustom01">Kullanıcı Adı - Soyadı (Kullanıcı NickName)</label>
+                            @Html.TextBoxFor(x=>x.WriterName ,new { @class="form-control",@name="WriterName"})
+                            @Html.ValidationMessageFor(c=>c.WriterName)
+                            @*<input type="text" class="form-control" id="validationDefault01" name="WriterName" placeholder="" required="">*@
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="validationCustom02">Mail Adres</label>
+                             @Html.TextBoxFor(x=>x.WriterMail,new { @class="form-control",@name="WriterMail"})
+                            @Html.ValidationMessageFor(c=>c.WriterMail)
+                            @*<input type="text" class="form-control" id="validationDefault02" name="WriterMail" placeholder="" required="">*@
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputPassword1 mb-2">Şifre</label>
+                             @Html.TextBoxFor(x=>x.WriterPassword,new { @class="form-control",@name="WriterPassword"})
+                            @Html.ValidationMessageFor(c=>c.WriterPassword)
+                            @*<input type="password" class="form-control" id="password1" placeholder="" name="WriterPassword" required="">*@
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputPassword2 mb-2">Profil Foto</label>
+                             @Html.TextBoxFor(x=>x.WriterImage,new {@class="form-control",@name="WriteImage"})
+                            @Html.ValidationMessageFor(c=>c.WriterImage)
+                            @*<input type="text" class="form-control" id="password2" placeholder="" name="WriterImage" required="">*@
+                        </div>
+
+                    </div>
+                    @*<div class="form-row">
+                        <div class="form-group col-md-12">
+                        <label for="exampleInputPassword1 mb-2" > Kullanıcı Profil Foto</label>
+                        <input type="image" class="form-control" name="WriterImage" placeholder="" required=""/>
+                        </div>
+                        </div>*@
+                    <button type="submit" id="btn1" class="btn btn-primary submit mb-4">Kayıt Ol</button>
+                    <p>
+                        <a href="#">Tüm Şartları Okudum Kabul Ediyorum . . . </a>
+                    </p>
+                }
+                @*	</form>*@
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+                    $('#btn1').click(function()
+                    {
+
+                        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Kayıt Başarılı',
+          showConfirmButton: false,
+          timer: 1500
+        })
+
+                    }
+
+                    );
+
+    </script>
+
+</section>
+
