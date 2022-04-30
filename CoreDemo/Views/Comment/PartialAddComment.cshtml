@@ -1,37 +1,74 @@
 ﻿
- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+ 
+
 
   <div class="comment-top">
                         <h4>Yorum</h4>
                         <div class="comment-bottom">
                             <form  method="post">
-                                <input id="txtName" class="form-control" type="text" name="Name" placeholder="Adınız Soyadınız" required="">
-                                <input id="txtTitle" class="form-control" type="text" name="Title" placeholder="Başlık" required="">
+                                <input id="txtName" class="form-control" type="text" name="CommentName" placeholder="Adınız Soyadınız" required="">
+                                <input id="txtTitle" class="form-control" type="text" name="CommentTitle" placeholder="Başlık" required="">
 
                                 @*<input class="form-control" type="text" name="CommentContent" placeholder="Yorum" required="">*@
 
-                                <textarea id="txtContent" class="form-control" name="Content" placeholder="Yorum..." required=""></textarea>
+                                <textarea id="txtContent" class="form-control" name="CommentContent" placeholder="Yorum..." required=""></textarea>
                                 <button id="btnYorumYap" type="submit" class="btn btn-secondary submit">Yorum Yap</button>
                                 <hr />
                             </form>
                         </div>
                     </div>
-                    <form   method="post">
+                    <form method="post">
           
           
 
         </form>
-<script type="text/javascript">
+
+        <script type="text/javascript">
         $(function () {
             $("#btnYorumYap").click(function () {
                 $.ajax({
                     type: "POST",
                    url: "/Comment/PartialAddComment",
                     data: { 
-                        "Name": $("#txtName").val() ,
-                        "Title":$("#txtTitle").val(),
-                        "Content":$("#txtContent").val()
+                        
+                       "CommentName": $("#txtName").val() ,
+                        "CommentTitle":$("#txtTitle").val(),
+                        "CommentContent":$("#txtContent").val()
+                    
+                    },
+                   
+
+                      success: function (response) {
+                      swal("Kayıt Başarılı", "", "success");
+                    },
+
+                    
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                   }
+                });
+            });
+        });
+       
+    </script>
+
+
+
+
+
+@*<script type="text/javascript">
+        $(function () {
+            $("#btnYorumYap").click(function () {
+                $.ajax({
+                    type: "POST",
+                   url: "/Comment/PartialAddComment",
+                    data: { 
+                        "CommentName": $("#txtName").val() ,
+                        "CommentTitle":$("#txtTitle").val(),
+                        "CommentContent":$("#txtContent").val()
                     
                     },
                     success: function (response) {
@@ -47,4 +84,4 @@
             });
         });
        
-    </script>
+    </script>*@
