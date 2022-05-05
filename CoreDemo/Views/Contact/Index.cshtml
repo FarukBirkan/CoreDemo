@@ -1,0 +1,150 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="zxx">
+
+
+<body>
+	<!--Header-->
+
+	
+	<!--//header-->
+
+	<!--/banner-->
+
+
+	<!--//banner-->
+	<!--/main-->
+	<section class="main-content-w3layouts-agileits">
+
+		<h3 class="tittle">İletşim Bilgileri</h3>
+		<p class="sub text-center">Faruk Birkan UZUN</p>
+		
+		
+		<div class="ad-inf-sec bg-light">
+			<div class="container">
+				<div class="address row">
+
+					<div class="col-lg-4 address-grid">
+						<div class="row address-info">
+							<div class="col-md-4 address-left text-center">
+								<i class="far fa-map"></i>
+							</div>
+							<div class="col-md-8 address-right text-left">
+								<h6>Adres</h6>
+								<p> Türkiye / İstanbul
+
+								</p>
+							</div>
+						</div>
+
+					</div>
+					<div class="col-lg-4 address-grid">
+						<div class="row address-info">
+							<div class="col-md-4 address-left text-center">
+								<i class="far fa-envelope"></i>
+							</div>
+							<div class="col-md-8 address-right text-left">
+								<h6>Email</h6>
+								<p>
+									<a href="mailto:example@email.com"> farukbirkanuzun@gmail.com</a>
+
+								</p>
+							</div>
+
+						</div>
+					</div>
+					<div class="col-lg-4 address-grid">
+						<div class="row address-info">
+							<div class="col-md-4 address-left text-center">
+								<i class="fas fa-mobile-alt"></i>
+							</div>
+							<div class="col-md-8 address-right text-left">
+								<h6>Telefon</h6>
+								<p>0544 233 08 57 </p>
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="contact_grid_right">
+				
+				<form method="post">
+					<div class="row contact_left_grid">
+						<div class="col-md-12 con-left">
+							<div class="form-group">
+								<hr />
+								<label for="validationCustom01 my-2">Ad/Soyad</label>
+								<input class="form-control" type="text" name="ContextUserName" id="txtName" placeholder="" required="">
+							</div>
+							<div class="form-group">
+								<label for="exampleFormControlInput1">Email</label>
+								<input class="form-control" type="email" name="ContextMail" id="txtEmail" placeholder="" required="">
+							</div>
+							<div class="form-group">
+								<label for="validationCustom03 my-2">Başlık</label>
+								<input class="form-control" type="text" name="ContextSubject" id="txtSubject" placeholder="" required="">
+							</div>
+							<div class="form-group">
+								<label for="validationCustom03 my-2">Mesaj</label>
+								<textarea class="form-control" type="text" name="ContextMessage" placeholder="" required="" id="txtMessage"></textarea>
+							</div>
+						</div>
+						<div class="col-md-12 con-right">
+							
+							<input class="form-control" type="submit" id="btnGet" value="Gönder">
+
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+	<!--//main-->
+	<!--footer-->
+
+
+</body>
+
+</html>
+
+<script type="text/javascript">
+        $(function () {
+            $("#btnGet").click(function () {
+                $.ajax({
+                    type: "POST",
+                   url: "/Contact/Index",
+                    data: 
+					{ "Mail": $("#txtMail").val(),
+					  "Name":$("txtName").val(),
+					  "Subject":$("txtSubject").val(),
+					  "Message":$("txtMessage").val()
+					
+					
+					},
+                    success: function (response) {
+                      swal("Kayıt Başarılı", "", "success");
+                     inputs.forEach(input => {
+    input.value = '';
+  });
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                   }
+                });
+            });
+        });
+       
+    </script>
+
