@@ -77,7 +77,7 @@
 		<div class="container">
 			<div class="contact_grid_right">
 				
-				<form method="post">
+				<form  method="post">
 					<div class="row contact_left_grid">
 						<div class="col-md-12 con-left">
 							<div class="form-group">
@@ -100,7 +100,7 @@
 						</div>
 						<div class="col-md-12 con-right">
 							
-							<input class="form-control" type="submit" id="btnGet" value="Gönder">
+							<input class="form-control" type="submit" id="btnContact" value="Gönder">
 
 						</div>
 					</div>
@@ -118,7 +118,7 @@
 
 <script type="text/javascript">
         $(function () {
-            $("#btnGet").click(function () {
+            $("#btnContact").click(function () {
                 $.ajax({
                     type: "POST",
                    url: "/Contact/Index",

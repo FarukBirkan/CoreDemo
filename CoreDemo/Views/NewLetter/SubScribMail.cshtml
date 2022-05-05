@@ -16,7 +16,7 @@
             @*<input type="button" value="Kaydet"  id="btnGet" />*@
             <hr />
 
-            <button type="button" class="btn btn-info" id="btnGet">Mail Adres Kaydet</button>
+            <button type="button" class="btn btn-info" id="btnMail">Mail Adres Kaydet</button>
         </form>
 
 
@@ -25,7 +25,7 @@
 
 <script type="text/javascript">
         $(function () {
-            $("#btnGet").click(function () {
+            $("#btnMail").click(function () {
                 $.ajax({
                     type: "POST",
                    url: "/NewLetter/SubScribMail",
