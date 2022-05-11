@@ -115,13 +115,14 @@
 </body>
 
 </html>
-
+ 
 <script type="text/javascript">
         $(function () {
             $("#btnContact").click(function () {
                 $.ajax({
                     type: "POST",
-                   url: "/Contact/Index",
+                   url: "/Contact/Index/",
+				       dataType:'json',
                     data: 
 					{ "Mail": $("#txtMail").val(),
 					  "Name":$("txtName").val(),

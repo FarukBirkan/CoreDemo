@@ -16,24 +16,25 @@ namespace UILayer.Controllers
         }
 
         [HttpPost]
-        public JsonResult Index(string ContextMail, string ContextSubject, string ContextMessage, string ContextUserName)
+        public IActionResult Index(Contact contact)
         {
-
-            Contact nL = new Contact()
+            System.Threading.Thread.Sleep(2000);
+            //string ContextMail; string ContextSubject; string ContextMessage; string ContextUserName;
+            Contact cnt = new Contact()
             {
-                ContextUserName = ContextUserName,
-                ContextSubject = ContextSubject,
-                ContextMessage = ContextMessage,
-                ContextMail = ContextMail,
+                ContextUserName = contact.ContextMail,
+                ContextSubject =contact.ContextSubject,
+                ContextMessage = contact.ContextMessage,
+                ContextMail = contact.ContextUserName,
                 ContextDate = System.DateTime.Now,
                 ContextStatus = true
             };
 
 
-            ctm.ContactAdd(nL);
+            ctm.ContactAdd(cnt);
 
 
-            return Json(nL);
+            return View();
         }
     }
 }
