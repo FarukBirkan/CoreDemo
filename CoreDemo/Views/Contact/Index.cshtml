@@ -4,6 +4,7 @@
     Layout = "~/Views/Shared/UserLayout.cshtml";
 }
 
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -117,6 +118,8 @@
 </html>
  
 <script type="text/javascript">
+const { default: Swal } = require("sweetalert2");
+
         $(function () {
             $("#btnContact").click(function () {
                 $.ajax({
@@ -131,8 +134,9 @@
 					
 					
 					},
+				
                     success: function (response) {
-                      swal("Kayıt Başarılı", "", "success");
+                      Swal.fire('Kayıt Başarılı.');
                      inputs.forEach(input => {
     input.value = '';
   });

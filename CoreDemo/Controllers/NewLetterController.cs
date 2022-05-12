@@ -19,7 +19,7 @@ namespace UILayer.Controllers
         // SubScribMail
 
         [HttpPost]
-        public JsonResult SubScribMail(string Mail)
+        public IActionResult SubScribMail(string Mail)
         {
 
             NewsLetter nL = new NewsLetter()
@@ -32,7 +32,7 @@ namespace UILayer.Controllers
             
 
             nlM.LetterAdd(nL);
-            return Json(nL);
+            return View();
             //Validasyon
             //if (model.Id == 0)
             //{
