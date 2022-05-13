@@ -1,3 +1,5 @@
+
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -24,7 +26,7 @@ namespace CoreDemo
             services.AddControllersWithViews();
             services.AddRazorPages().AddRazorRuntimeCompilation();
 
-            services.AddSession();
+            //services.AddSession();
 
 
             //Proje seviyesinde Authorize iþlemi kodlarý.
@@ -33,9 +35,19 @@ namespace CoreDemo
             }
           
             );
-            
+            services.AddMvc();
+            services.AddAuthentication(
+                CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(v =>
+                {
+                    v.LoginPath = "/Login/Index";
+                }
 
-            
+
+            );
+
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,11 +69,11 @@ namespace CoreDemo
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseAuthentication();
             app.UseRouting();
 
             app.UseAuthorization();
-            app.UseSession();   
+          // app.UseSession();   
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

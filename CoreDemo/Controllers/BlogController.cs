@@ -3,10 +3,12 @@ using BusinessLayer.ValidationRules;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace UILayer.Controllers
 {
+    [AllowAnonymous]
     public class BlogController : Controller
     {
         BlogManager bM = new BlogManager(new EfBlogRepository());
@@ -27,7 +29,7 @@ namespace UILayer.Controllers
             return View(values);
         }
 
-
+        
       
 
     }
