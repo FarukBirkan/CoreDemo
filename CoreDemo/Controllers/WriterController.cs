@@ -16,5 +16,10 @@ namespace UILayer.Controllers
         {
             return View();  
         }
+        [AllowAnonymous]
+        public PartialViewResult WriterNavBarPartial()
+        {
+            return PartialView();
+        }
     }
 }
